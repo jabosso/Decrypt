@@ -51,11 +51,11 @@ public class Decrypter {
         try {
             Cipher cipher = Cipher.getInstance("DES");
             cipher.init(Cipher.ENCRYPT_MODE, key );
-            SealedObject[] arr = new SealedObject[copies];
+            SealedObject[] resultArray = new SealedObject[copies];
             for(int i = 0; i < copies; i++) {
-                arr[i] = new SealedObject( plainPassword, cipher);
+                resultArray[i] = new SealedObject( plainPassword, cipher);
             }
-            return arr;
+            return resultArray;
         } catch ( Exception e )	{
             System.out.println(e.getMessage()) ;
         }

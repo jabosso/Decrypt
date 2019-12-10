@@ -44,7 +44,7 @@ public class main {
 
         long startTime = System.currentTimeMillis();
         long keyInterval = maxkey / numThreads;
-        long firstKey = 0;
+        long firstKey;
         long lastKey = 0;
 
         KeyTester[] threads = new KeyTester[numThreads];
@@ -53,7 +53,7 @@ public class main {
             firstKey = lastKey;
             lastKey += keyInterval;
             if(m == numThreads - 1) {
-                lastKey = maxkey+1;
+                lastKey = maxkey + 1;
             }
             threads[m] = new KeyTester(encryptedPwdArray[m], firstKey, lastKey, originalPassword.length(), fc);
             threads[m].start();
