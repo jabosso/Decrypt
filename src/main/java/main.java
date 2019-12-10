@@ -1,33 +1,80 @@
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import java.security.NoSuchAlgorithmException;
+import javax.crypto.SealedObject;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Timer;
 
 public class main {
 
+
+
     public static void main(String[] args){
-        String originalPassword = "i";
-        String encryptedPassword = "";
 
-        try{
-            SecretKey encryptionKey = KeyGenerator.getInstance("DES").generateKey();
-            Encrypter originalEncoder = new Encrypter();
-            originalEncoder.setKey(encryptionKey);
-            encryptedPassword = originalEncoder.encrypt(originalPassword);
-        }catch(NoSuchAlgorithmException e){}
-
-        SecretKeyBuffer buffer = new SecretKeyBuffer();
-        KeyProducer producer = new KeyProducer(buffer);
-        KeyTester[] keyTesters = new KeyTester[6];
-        for(int i=0; i<keyTesters.length; i++){
-            keyTesters[i] = new KeyTester(buffer, encryptedPassword);
+        String originalPassword = "";
+        int numThreads = 0;
+        long keyBits = 0L;
+        Scanner scanner = new Scanner(System.in);
+        try {
+            while (originalPassword.equals("") || numThreads == 0 || keyBits == 0L) {
+                if(originalPassword.equals("")){
+                    System.out.println("Input password");
+                    originalPassword = scanner.nextLine();
+                }
+                if(numThreads == 0){
+                    System.out.println("Input number of threads");
+                    numThreads = Integer.parseInt(scanner.nextLine());
+                }
+                if(keyBits == 0L){
+                    System.out.println("Input key bits");
+                    keyBits = Long.parseLong(scanner.nextLine());
+                }
+            }
+        } catch(Exception e) {
+            System.out.println("Missing inputs");
         }
 
-        producer.start();
-        for(int i=0; i<keyTesters.length; i++){
-            keyTesters[i].start();
+        long maxkey = ~(0L);
+        maxkey = maxkey >>> (64 - keyBits);
+
+        Decrypter encoder = new Decrypter();
+        Random generator = new Random ();
+        long key =  generator.nextLong();
+        key = key & maxkey;
+        encoder.setKey ( key );
+        SealedObject[] encryptedPwdArray = encoder.encryptedArray(originalPassword, numThreads);
+
+        long startTime = System.currentTimeMillis();
+        long keyInterval = maxkey / numThreads;
+        long firstKey = 0;
+        long lastKey = 0;
+
+        KeyTester[] threads = new KeyTester[numThreads];
+        FoundChecker fc = new FoundChecker(threads);
+        for(int m = 0; m < numThreads; m++){
+            firstKey = lastKey;
+            lastKey += keyInterval;
+            if(m == numThreads - 1) {
+                lastKey = maxkey+1;
+            }
+            threads[m] = new KeyTester(encryptedPwdArray[m], firstKey, lastKey, originalPassword.length(), fc);
+            threads[m].start();
         }
+
         Timer timer = new Timer();
-        timer.schedule(new FoundChecker(keyTesters),1000, 20000);
+        timer.schedule(new FoundChecker(threads),1000, 10000);
+
+        for(int m = 0; m < numThreads; m++) {
+            try{
+                threads[m].join();
+            } catch (InterruptedException e) {
+                System.out.println("Thread " + m + " interrupted.  Exception: " + e.toString() + " Message: " + e.getMessage());
+                return;
+            }
+        }
+
+        // Output search time
+        long elapsed = System.currentTimeMillis() - startTime;
+        long keys = maxkey + 1;
+        System.out.println ( "Completed search of " + keys + " keys at " + elapsed + " milliseconds.");
+        System.exit(1);
     }
 }

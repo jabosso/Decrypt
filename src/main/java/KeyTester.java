@@ -1,67 +1,53 @@
-import javax.crypto.SecretKey;
-import java.util.ArrayList;
-import java.util.List;
+import javax.crypto.*;
 
-public class KeyTester extends Thread{
+class KeyTester extends Thread {
 
-    private SecretKeyBuffer buffer;
-    private SecretKey testedKey;
-    private String encodedPassword;
-    private SecretKey usedKey;
-    private String resultPassword;
+    private Decrypter encoder;
+    private SealedObject encryptedPassword;
+    private long startKey;
+    private long endKey;
     private PasswordGenerator generator;
-    private List<String> testedPasswords = new ArrayList<String>();
-    private Encrypter encrypter;
-    private boolean found;
+    private long tested;
+    private FoundChecker fc;
+    private long testedKey;
 
-    public KeyTester(SecretKeyBuffer buffer, String encodedPassword){
-        this.buffer = buffer;
-        this.encodedPassword = encodedPassword;
-        generator = new PasswordGenerator(1);
-        testedKey = null;
-        encrypter = new Encrypter();
-        found = false;
-        resultPassword = "";
+    public KeyTester(SealedObject mySealed, long startKey, long endKey, int passwordLength, FoundChecker fc) {
+        encoder = new Decrypter();
+        encryptedPassword = mySealed;
+        this.startKey = startKey;
+        this.endKey = endKey;
+        generator = new PasswordGenerator(passwordLength);
+        tested = 0L;
+        this.fc = fc;
+        testedKey = startKey;
     }
 
-    public void run(){
-        while(!found) {
-            if(testedKey == null) {
-                updateKey();
-            }
-            while (testedKey != null && testedPasswords.size() < Math.pow(36, 1)) {
-                String passwordToTest = generator.generate();
-                if (!testedPasswords.contains(passwordToTest)) {
-                    String encodedToTest = encrypter.encrypt(passwordToTest);
-                    if (encodedToTest != null && encodedToTest.equals(encodedPassword)) {
-                        found = true;
-                        usedKey = testedKey;
-                        resultPassword = passwordToTest;
-                    } else {
-                        testedPasswords.add(passwordToTest);
+    public void run() {
+        while(!fc.found && testedKey< endKey){
+            encoder.setKey ( testedKey );
+            String decodedPassword = encoder.decrypt(encryptedPassword);
+            if(decodedPassword != null){
+                while(!fc.found && !generator.testedAllPassword()) {
+                    String passwordToTest = generator.generate();
+                    if (passwordToTest != null) {
+                        tested++;
+                        if (decodedPassword.equals(passwordToTest)) {
+                            System.out.println("Password decrypted: " + decodedPassword);
+                            fc.found = true;
+                        }
+                    }else{
+                        System.out.println("ciccia");
                     }
                 }
+                generator.reset();
             }
-            testedKey = null;
-            testedPasswords = new ArrayList<String>();
+            testedKey++;
         }
     }
 
-    private void updateKey(){
-        testedKey = buffer.consume();
-        if(testedKey != null){
-            encrypter.setKey(testedKey);
-        }else{
-            testedKey = null;
-        }
-
-    }
-
-    public boolean hasFound(){
-        return found;
-    }
-
-    public void setFound(boolean found){
-        this.found = found;
+    public String getTested(){
+        return "has tested " + (tested/1000) + "k password and " + (testedKey - startKey) + " keys";
     }
 }
+
+
