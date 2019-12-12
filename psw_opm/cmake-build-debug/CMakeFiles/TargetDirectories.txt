@@ -1,0 +1,3 @@
+/home/jabosso/CLionProjects/PC1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jabosso/CLionProjects/PC1/cmake-build-debug/CMakeFiles/PC1.dir
+/home/jabosso/CLionProjects/PC1/cmake-build-debug/CMakeFiles/edit_cache.dir

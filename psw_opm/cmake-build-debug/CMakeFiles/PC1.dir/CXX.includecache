@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jabosso/CLionProjects/PC1/des.h
+bits/stdc++.h
+-
+text_conv.h
+/home/jabosso/CLionProjects/PC1/text_conv.h
+
+/home/jabosso/CLionProjects/PC1/main.cpp
+iostream
+-
+cmath
+-
+omp.h
+-
+bits/stdc++.h
+-
+text_conv.h
+/home/jabosso/CLionProjects/PC1/text_conv.h
+des.h
+/home/jabosso/CLionProjects/PC1/des.h
+
+/home/jabosso/CLionProjects/PC1/text_conv.h
+map
+-
+
