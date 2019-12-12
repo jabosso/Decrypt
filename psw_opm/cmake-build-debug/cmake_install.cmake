@@ -1,4 +1,4 @@
-# Install script for directory: /home/jabosso/CLionProjects/PC1
+# Install script for directory: /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jabosso/CLionProjects/PC1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

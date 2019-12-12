@@ -6,27 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/jabosso/CLionProjects/PC1/des.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/des.h
 bits/stdc++.h
 -
 text_conv.h
-/home/jabosso/CLionProjects/PC1/text_conv.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/text_conv.h
 
-/home/jabosso/CLionProjects/PC1/main.cpp
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/main.cpp
 iostream
 -
 cmath
 -
-omp.h
--
 bits/stdc++.h
 -
 text_conv.h
-/home/jabosso/CLionProjects/PC1/text_conv.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/text_conv.h
 des.h
-/home/jabosso/CLionProjects/PC1/des.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/des.h
+utility.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/utility.h
 
-/home/jabosso/CLionProjects/PC1/text_conv.h
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/text_conv.h
 map
+-
+
+/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/utility.h
+iostream
+-
+vector
 -
 

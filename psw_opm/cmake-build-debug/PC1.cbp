@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/jabosso/CLionProjects/PC1/cmake-build-debug"/>
+				<Option working_dir="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/jabosso/CLionProjects/PC1/cmake-build-debug"/>
+				<Option working_dir="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PC1">
-				<Option output="/home/jabosso/CLionProjects/PC1/cmake-build-debug/PC1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jabosso/CLionProjects/PC1/cmake-build-debug"/>
+				<Option output="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/PC1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 PC1"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 PC1"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PC1/fast">
-				<Option output="/home/jabosso/CLionProjects/PC1/cmake-build-debug/PC1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jabosso/CLionProjects/PC1/cmake-build-debug"/>
+				<Option output="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/PC1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,30 +67,33 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 PC1/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 PC1/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/jabosso/CLionProjects/PC1/cmake-build-debug"/>
+				<Option working_dir="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/CLionProjects/PC1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jabosso/CLionProjects/PC1/keyGen.h">
+		<Unit filename="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/keyGen.h">
 			<Option target="PC1"/>
 		</Unit>
-		<Unit filename="/home/jabosso/CLionProjects/PC1/main.cpp">
+		<Unit filename="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/main.cpp">
 			<Option target="PC1"/>
 		</Unit>
-		<Unit filename="/home/jabosso/CLionProjects/PC1/CMakeLists.txt">
+		<Unit filename="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/utility.h">
+			<Option target="PC1"/>
+		</Unit>
+		<Unit filename="/home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
