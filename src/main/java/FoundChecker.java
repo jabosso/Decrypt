@@ -4,14 +4,19 @@ public class FoundChecker extends TimerTask {
 
     volatile boolean found;
 
-    private KeyTester[] threads;
-    FoundChecker(KeyTester[] threads){
+    private PasswordTester[] threads;
+
+    protected FoundChecker() {
+        found = false;
+    }
+
+    FoundChecker(PasswordTester[] threads) {
         this.threads = threads;
         found = false;
     }
 
-    public void run(){
-        for(int i=0; i<threads.length; i++){
+    public void run() {
+        for (int i = 0; i < threads.length; i++) {
             System.out.println("Thread " + i + " " + threads[i].getTested());
         }
     }

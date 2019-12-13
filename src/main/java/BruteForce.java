@@ -10,6 +10,8 @@ public class BruteForce {
         String originalPassword = "";
         int numThreads = 0;
         long keyBits = 0L;
+
+        // Parameters input
         Scanner scanner = new Scanner(System.in);
         try {
             while (originalPassword.equals("") || numThreads == 0 || keyBits == 0L) {
@@ -29,11 +31,12 @@ public class BruteForce {
         } catch (Exception e) {
             System.out.println("Missing inputs");
         }
-
         scanner.close();
+
+        PasswordGenerator pwdGenerator = new PasswordGenerator(originalPassword.length());
+        // Key range setup and original password encryption
         long maxkey = ~(0L);
         maxkey = maxkey >>> (64 - keyBits);
-
         Encrypter encoder = new Encrypter();
         Random generator = new Random();
         long key = generator.nextLong();
@@ -42,19 +45,11 @@ public class BruteForce {
         String encryptedPassword = encoder.encrypt(originalPassword);
 
         long startTime = System.currentTimeMillis();
-        long keyInterval = maxkey / numThreads;
-        long firstKey;
-        long lastKey = 0;
 
-        KeyTester[] threads = new KeyTester[numThreads];
+        PasswordTester[] threads = new PasswordTester[numThreads];
         FoundChecker fc = new FoundChecker(threads);
         for (int m = 0; m < numThreads; m++) {
-            firstKey = lastKey;
-            lastKey += keyInterval;
-            if (m == numThreads - 1) {
-                lastKey = maxkey + 1;
-            }
-            threads[m] = new KeyTester(encryptedPassword, firstKey, lastKey, originalPassword.length(), fc);
+            threads[m] = new PasswordTester(encryptedPassword, maxkey, fc, pwdGenerator);
             threads[m].start();
         }
 
@@ -66,15 +61,15 @@ public class BruteForce {
                 threads[m].join();
             } catch (InterruptedException e) {
                 System.out.println(
-                        "Thread " + m + " interrupted.  Exception: " + e.toString() + " Message: " + e.getMessage());
+                        "Thread " + m + " interrotto. Errore: " + e.toString() + " Messaggio: " + e.getMessage());
                 return;
             }
         }
 
-        // Output search time
         long elapsed = System.currentTimeMillis() - startTime;
         long keys = maxkey + 1;
-        System.out.println("Completed search of " + keys + " keys at " + elapsed + " milliseconds.");
+
+        System.out.println("Ricerca su " + keys + " chiavi completata in " + elapsed + " millisecondi.");
         System.exit(1);
     }
 }

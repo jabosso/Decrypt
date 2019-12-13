@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PasswordGenerator {
 
     private int pwdLength;
@@ -19,11 +21,12 @@ public class PasswordGenerator {
         for (int i = 0; i < pwdLength; i++) {
             pwdVector[i] = 0;
         }
+        pwdVector[pwdVector.length - 1] = -1;
         maxAmount = (long) Math.pow(charSet.length, pwdLength);
         amountGenerated = 0;
     }
 
-    public String generate() {
+    public synchronized String generate() {
         String newPwd = null;
         if (amountGenerated < maxAmount) {
             amountGenerated++;
@@ -67,5 +70,23 @@ public class PasswordGenerator {
             pwdVector[i] = 0;
         }
         amountGenerated = 0;
+    }
+
+    protected boolean isPwdVectorEmpty() {
+        int[] emptyVector = new int[pwdLength];
+        boolean equal = Arrays.equals(pwdVector, emptyVector);
+        if (equal) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected boolean isAmountZero() {
+        return amountGenerated == 0;
+    }
+
+    protected long getMaxAmount() {
+        return maxAmount;
     }
 }
