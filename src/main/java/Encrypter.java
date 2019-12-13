@@ -1,8 +1,6 @@
 import com.sun.mail.util.BASE64EncoderStream;
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;

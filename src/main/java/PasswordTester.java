@@ -9,23 +9,16 @@ class PasswordTester extends Thread {
     private long testedKey;
     private PasswordGenerator generator;
 
-    public PasswordTester(String originalPwdEncrypted, long endKey, FoundChecker fc, PasswordGenerator generator) {
+    public PasswordTester(String originalPwdEncrypted, long endKey, FoundChecker fc, PasswordGenerator generator)
+            throws IllegalArgumentException {
         encoder = new Encrypter();
         if (originalPwdEncrypted.equals("") || originalPwdEncrypted.equals(null)) {
-            try {
-                throw new IllegalArgumentException("La password non puo essere vuota");
-            } catch (IllegalArgumentException e) {
-                throw e;
-            }
+            throw new IllegalArgumentException("La password non puo essere vuota");
         }
         this.originalPwdEncrypted = originalPwdEncrypted;
         startKey = 0;
         if (endKey < 0) {
-            try {
-                throw new IllegalArgumentException("Nessuna chiave da testare");
-            } catch (IllegalArgumentException e) {
-                throw e;
-            }
+            throw new IllegalArgumentException("Nessuna chiave da testare");
         }
         this.endKey = endKey;
         tested = 0L;
@@ -52,10 +45,6 @@ class PasswordTester extends Thread {
                 testedKey++;
             }
         }
-
-    }
-
-    private void checkPwd(String pwd) {
 
     }
 
