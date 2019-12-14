@@ -1,56 +1,32 @@
 import org.testng.annotations.*;
-import java.lang.reflect.Field;
 import org.testng.*;
 
 public class PasswordGeneratorTests {
 
+    private PasswordGenerator generator;
+
     @Test
-    public void TestedAllPwds_ReturnsTrue() throws NoSuchFieldException, IllegalAccessException {
-        Field amountGenerated = PasswordGenerator.class.getDeclaredField("amountGenerated");
-        amountGenerated.setAccessible(true);
-        PasswordGenerator generator = new PasswordGenerator(8);
-        long myAmount = 100000000L;
-        amountGenerated.set(generator, myAmount);
-
-        final boolean actual = generator.testedAllPwds();
-
-        Assert.assertTrue(actual);
+    public void ProducedAllPwds_ReturnsTrue() {
+        generator = new PasswordGenerator(3);
+        for (int i = 0; i < generator.getMaxAmount(); i++) {
+            generator.generate();
+        }
+        Assert.assertEquals(generator.getAmountGenerated(), generator.getMaxAmount());
     }
 
     @Test
-    public void TestedAllPwds_ReturnsFalse() throws NoSuchFieldException, IllegalAccessException {
-        Field amountGenerated = PasswordGenerator.class.getDeclaredField("amountGenerated");
-        amountGenerated.setAccessible(true);
-        PasswordGenerator generator = new PasswordGenerator(8);
-        long myAmount = 1L;
-        amountGenerated.set(generator, myAmount);
-
-        final boolean actual = generator.testedAllPwds();
-
+    public void ProducedAllPwds_ReturnsFalse() {
+        generator = new PasswordGenerator(5);
+        for (int i = 0; i < generator.getMaxAmount() - 1; i++) {
+            generator.generate();
+        }
+        boolean actual = generator.getAmountGenerated() == generator.getMaxAmount();
         Assert.assertFalse(actual);
     }
 
     @Test
-    public void Reset_ReturnsZeroArray() throws NoSuchFieldException, IllegalAccessException {
-
-        Field pwdVectorField = PasswordGenerator.class.getDeclaredField("pwdVector");
-        pwdVectorField.setAccessible(true);
-        PasswordGenerator generator = new PasswordGenerator(8);
-        int[] pwdVector = new int[8];
-        for (int i = 0; i < pwdVector.length; i++) {
-            pwdVector[i] = (int) (Math.random() * ((10)));
-        }
-
-        pwdVectorField.set(generator, pwdVector);
-        generator.reset();
-
-        Assert.assertTrue(generator.isPwdVectorEmpty());
-        Assert.assertTrue(generator.isAmountZero());
-    }
-
-    @Test
     public void generate_ReturnsStringWithChars() {
-        PasswordGenerator generator = new PasswordGenerator(8);
+        generator = new PasswordGenerator(8);
         String actual = generator.generate();
 
         boolean wrongChar = false;
@@ -71,16 +47,48 @@ public class PasswordGeneratorTests {
     }
 
     @Test
-    public void generate_ReturnsNull() throws NoSuchFieldException, IllegalAccessException {
-        Field amountGeneratedField = PasswordGenerator.class.getDeclaredField("amountGenerated");
-        amountGeneratedField.setAccessible(true);
-        PasswordGenerator generator = new PasswordGenerator(8);
-        long amountGenerated = generator.getMaxAmount();
-        amountGeneratedField.set(generator, amountGenerated);
+    public void generate_ReturnsNull() {
+        generator = new PasswordGenerator(3);
+        for (int i = 0; i < generator.getMaxAmount(); i++) {
+            generator.generate();
+        }
 
         String actual = generator.generate();
 
         Assert.assertEquals(actual, null);
     }
 
+    @Test
+    public void getNextPassword_ReturnsArrayIncrementedByOne() {
+        generator = new PasswordGenerator(3);
+        int[] actual = { 5, 4, 3 };
+
+        actual = generator.getNextPassword(actual);
+        int[] expected = { 5, 4, 4 };
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getNextPassword_DealsWithRest() {
+        generator = new PasswordGenerator(3);
+        int charsetLength = PasswordGenerator.charSet.length;
+        int[] actual = { 5, charsetLength - 1, charsetLength - 1 };
+
+        actual = generator.getNextPassword(actual);
+
+        int[] expected = { 6, 0, 0 };
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getNextPassword_StopsAtMaxAmount() {
+        generator = new PasswordGenerator(3);
+        int charsetLength = PasswordGenerator.charSet.length;
+        int[] expected = { charsetLength - 1, charsetLength - 1, charsetLength - 1 };
+        int[] actual = expected.clone();
+
+        actual = generator.getNextPassword(actual);
+
+        Assert.assertEquals(actual, expected);
+    }
 }

@@ -1,10 +1,7 @@
-import java.util.Arrays;
-
 public class PasswordGenerator {
 
     private int pwdLength;
     private int[] pwdVector;
-    private long maxAmount;
     private long amountGenerated;
     /*
      * static char[] charSet =
@@ -22,71 +19,68 @@ public class PasswordGenerator {
             pwdVector[i] = 0;
         }
         pwdVector[pwdVector.length - 1] = -1;
-        maxAmount = (long) Math.pow(charSet.length, pwdLength);
         amountGenerated = 0;
     }
 
     public synchronized String generate() {
         String newPwd = null;
-        if (amountGenerated < maxAmount) {
+        if (amountGenerated == 0) {
+            pwdVector = new int[pwdLength];
+            newPwd = generateString(pwdVector);
             amountGenerated++;
-            pwdVector[pwdVector.length - 1] += 1;
-            int rest = pwdVector[pwdVector.length - 1] / charSet.length;
-            pwdVector[pwdVector.length - 1] = pwdVector[pwdVector.length - 1] % charSet.length;
-            int i = pwdLength - 2;
-            while (rest == 1 && i >= 0) {
-                if (i != 0 || pwdVector[i] < (charSet.length - 1)) {
-                    pwdVector[i] = pwdVector[i] + rest;
-                    rest = 0;
-                    if (pwdVector[i] == charSet.length && i > 0) {
-                        rest = pwdVector[i] / charSet.length;
-                        pwdVector[i] = pwdVector[i] % charSet.length;
-                        i--;
-                    }
-                } else {
-                    rest = 0;
-                }
-            }
-            newPwd = generateString();
-            return newPwd;
+        } else if (!producedAllPwds()) {
+            pwdVector = getNextPassword(pwdVector);
+            newPwd = generateString(pwdVector);
         }
-        return null;
+        return newPwd;
     }
 
-    private String generateString() {
+    protected int[] getNextPassword(int[] vector) {
+        int[] startingVector = vector.clone();
+        vector[vector.length - 1] += 1;
+        int rest = vector[vector.length - 1] / charSet.length;
+        vector[vector.length - 1] = vector[vector.length - 1] % charSet.length;
+        int i = pwdLength - 2;
+        while (rest == 1 && i >= 0) {
+            vector[i] = vector[i] + rest;
+            rest = 0;
+            if (vector[i] == charSet.length) {
+                rest = vector[i] / charSet.length;
+                vector[i] = vector[i] % charSet.length;
+                i--;
+            }
+        }
+        amountGenerated++;
+        boolean empty = true;
+        for (int j = 0; i < vector.length; i++) {
+            if (vector[j] != 0) {
+                empty = false;
+            }
+        }
+        if (empty) {
+            return startingVector;
+        }
+        return vector;
+    }
+
+    private String generateString(int[] vector) {
         StringBuilder newPwd = new StringBuilder();
-        for (int value : pwdVector) {
+        for (int value : vector) {
             newPwd.append(charSet[value]);
         }
         return newPwd.toString();
     }
 
-    public boolean testedAllPwds() {
-        return amountGenerated == maxAmount;
-    }
-
-    public void reset() {
-        for (int i = 0; i < pwdLength; i++) {
-            pwdVector[i] = 0;
-        }
-        amountGenerated = 0;
-    }
-
-    protected boolean isPwdVectorEmpty() {
-        int[] emptyVector = new int[pwdLength];
-        boolean equal = Arrays.equals(pwdVector, emptyVector);
-        if (equal) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    protected boolean isAmountZero() {
-        return amountGenerated == 0;
+    public boolean producedAllPwds() {
+        return amountGenerated == getMaxAmount();
     }
 
     protected long getMaxAmount() {
+        long maxAmount = (long) Math.pow(charSet.length, pwdLength);
         return maxAmount;
+    }
+
+    protected long getAmountGenerated() {
+        return amountGenerated;
     }
 }

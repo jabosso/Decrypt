@@ -37,12 +37,13 @@ public class BruteForce {
         // Key range setup and original password encryption
         long maxkey = ~(0L);
         maxkey = maxkey >>> (64 - keyBits);
-        Encrypter encoder = new Encrypter();
+
+        Encrypter encoder = new Encrypter("DES");
         Random generator = new Random();
         long key = generator.nextLong();
         key = key & maxkey;
         encoder.setKey(key);
-        String encryptedPassword = encoder.encrypt(originalPassword);
+        String encryptedPassword = encoder.encrypt(originalPassword, "UTF8");
 
         long startTime = System.currentTimeMillis();
 

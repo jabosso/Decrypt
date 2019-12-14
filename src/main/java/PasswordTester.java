@@ -11,7 +11,8 @@ class PasswordTester extends Thread {
 
     public PasswordTester(String originalPwdEncrypted, long endKey, FoundChecker fc, PasswordGenerator generator)
             throws IllegalArgumentException {
-        encoder = new Encrypter();
+
+        encoder = new Encrypter("DES");
         if (originalPwdEncrypted.equals("") || originalPwdEncrypted.equals(null)) {
             throw new IllegalArgumentException("La password non puo essere vuota");
         }
@@ -31,28 +32,30 @@ class PasswordTester extends Thread {
             String pwdToTest = generator.generate();
             testedKey = startKey;
             tested++;
-            while (testedKey <= endKey) {
-                encoder.setKey(testedKey);
-                String pwdToTestEncrypted = encoder.encrypt(pwdToTest);
-                if (pwdToTestEncrypted != null && !pwdToTest.equals("")) {
-                    if (originalPwdEncrypted.equals(pwdToTestEncrypted)) {
-                        System.out.println("Password decriptata: " + pwdToTest);
-                        fc.found = true;
-                    }
-                } else {
-                    System.out.println("Errore nella generazione della password");
-                }
+            while (testedKey <= endKey && !fc.found) {
+                fc.found = testPasswordWithKey(pwdToTest, testedKey);
                 testedKey++;
             }
         }
+    }
 
+    public boolean testPasswordWithKey(String pwdToTest, long testedKey) {
+        encoder.setKey(testedKey);
+        String pwdToTestEncrypted = encoder.encrypt(pwdToTest, "UTF8");
+        if (pwdToTestEncrypted != null && !pwdToTest.equals("")) {
+            if (originalPwdEncrypted.equals(pwdToTestEncrypted)) {
+                System.out.println("Password decriptata: " + pwdToTest);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            System.out.println("Errore nella codifica della password");
+            return false;
+        }
     }
 
     public String getTested() {
         return "ha testato " + tested + " passwords";
-    }
-
-    protected boolean hasFound() {
-        return fc.found;
     }
 }
