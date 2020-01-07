@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jabosso/Desktop/PC_Exam/des_fin/des.h
+
+/home/jabosso/Desktop/PC_Exam/des_fin/key_trasformer.h
+iostream
+-
+cmath
+-
+bits/stdc++.h
+-
+stdio.h
+-
+omp.h
+-
+des.h
+/home/jabosso/Desktop/PC_Exam/des_fin/des.h
+
+/home/jabosso/Desktop/PC_Exam/des_fin/main.cpp
+iostream
+-
+key_trasformer.h
+/home/jabosso/Desktop/PC_Exam/des_fin/key_trasformer.h
+des.h
+/home/jabosso/Desktop/PC_Exam/des_fin/des.h
+text_converter.h
+/home/jabosso/Desktop/PC_Exam/des_fin/text_converter.h
+
+/home/jabosso/Desktop/PC_Exam/des_fin/text_converter.h
+map
+-
+

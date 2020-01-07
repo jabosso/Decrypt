@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
-project(PC1)
+project(des_fin)
 
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fopenmp")
-
-set(SOURCE_FILES main.cpp)
-
-add_executable(PC1 main.cpp keyGen.h utility.h)
+add_executable(des_fin main.cpp text_converter.h text_converter.cpp des.h key_trasformer.cpp key_trasformer.h des.cpp)

@@ -1,75 +1,48 @@
 #include <iostream>
-#include <cmath>
-#include <bits/stdc++.h>
-#include "text_conv.h"
+#include "key_trasformer.h"
 #include "des.h"
-#include "utility.h"
-#define  num 56
-using namespace std;
-table mt;
-//--------------------------------------------------------------------------------------------------------------------//
-void researchbykey(string key_bin, string target){
+#include "text_converter.h"
+
+vector<string> genDict(){
+    vector<string> dict(6);
+    dict[0]="03/05/94";
+    dict[1]="19/09/92";
+    dict[2]="23/12/59";
+    dict[3]="13/12/98";
+    dict[4]="10/08/58";
+    dict[5]="24/11/92";
+    return dict;
+}
+time_t  start, fine;
+int main() {
+
+    key_set original_key = key_producer(4343422);
+    string plain_psw = "13/12/98";
+    string encoded_psw = encrypt(chr2hex(plain_psw),original_key.rkb, original_key.rk);
     vector<string>plain_text = genDict();
-    string left = key_bin.substr(0,28);
-    string right =key_bin.substr(28,28);
-    vector<string> rkb;
-    vector<string>rk;
-//--------------------------------------------------------------------------------------------------------------------//
-    for(int i=0; i<16; i++){
-        left = shift_left(left,mt.shift_table[i]);
-        right = shift_left(right,mt.shift_table[i]);
-        string combine = left+right;
-        string RoundKey = permute(combine, mt.key_comp, 48);
-        rkb.push_back(RoundKey);
-        rk.push_back(bin2hex(RoundKey));
-    }
-//--------------------------------------------------------------------------------------------------------------------//
-    for (int r=0;r<6;r++){
-        string cipher = encrypt(chr2hex(plain_text[r]), rkb,rk);
-        if (cipher == target){
-            cout<<"la psw in chiaro è "<<plain_text[r]<<endl;
-            cout<<"corrispondenza con "<<cipher<<endl;
-            exit(EXIT_SUCCESS);
+    long int max_key = pow(2,56);
+    time(&start);
+#pragma omp parallel for schedule (dynamic, 1000)
+    for(long int i=0; i< max_key; i++){
+        key_set current_key = key_producer(i);
+#pragma omp parallel for schedule (dynamic, 2)
+        for (int r=0;r<6; r++){
+            string cipher = encrypt(chr2hex(plain_text[r]),current_key.rkb, current_key.rk);
+            if (cipher ==encoded_psw){
+                char p_l[plain_text[r].size()+1];
+                strcpy(p_l,plain_text[r].c_str());
+                char c_l[cipher.size()+1];
+                strcpy(c_l,cipher.c_str());
+                printf("la pasword in chiaro è %s codificata in %s \n", p_l, c_l);
+                time(&fine);
+                double time_taken = double(fine - start);
+                cout << "Time taken by program is : " << fixed
+                     << time_taken << setprecision(5);
+                cout << " sec " << endl;
+                exit(EXIT_SUCCESS);
+            }
         }
     }
-}
 
-
-void keyIterator(long int n, string target){
-#pragma omp parallel for
-    for (long int i=0; i<n;i++) {
-        bitset<num> binary(i);
-            // cout <<"  "<<binary<<"   "<< endl;
-        string x = binary.to_string();
-        researchbykey(x, target);
-    }
-}
-
-int main()
-{
-    bitset<num>original_key_bin(12342);
-    vector<string>dic = genDict();
-    string plain_psw = "13/12/98";
-    string originalkey = original_key_bin.to_string();
-    cout<< "la chiave originale :  " << originalkey << endl;
-    cout<< "psw in chiaro  : "<< plain_psw << endl;
-//--------------------------------------------------------------------------------------------------------------------//
-    string left = originalkey.substr(0,28);
-    string right =originalkey.substr(28,28);
-    vector<string> rkb;
-    vector<string>rk;
-//--------------------------------------------------------------------------------------------------------------------//
-    for(int i=0; i<16; i++){
-        left = shift_left(left,mt.shift_table[i]);
-        right = shift_left(right,mt.shift_table[i]);
-        string combine = left+right;
-        string RoundKey = permute(combine, mt.key_comp, 48);
-        rkb.push_back(RoundKey);
-        rk.push_back(bin2hex(RoundKey));
-    }
-//--------------------------------------------------------------------------------------------------------------------//
-    string encoded_psw = encrypt(chr2hex(plain_psw), rkb,rk);
-    cout<< "psw cifrata  : "<< encoded_psw << endl;
-    keyIterator(pow(2,num),encoded_psw);
     return 0;
 }

@@ -1,0 +1,21 @@
+
+Parallela 432222
+la pasword in chiaro è 13/12/98 codificata in 5A7795C290EB1348
+Time taken by program is : 156.000000 sec
+Non Parallela 432222
+la pasword in chiaro è 13/12/98 codificata in 5A7795C290EB1348
+Time taken by program is : 695.000000 sec
+
+Parallela 4322
+la pasword in chiaro è 13/12/98 codificata in 491C8A60DBC16D5D
+Time taken by program is : 1.000000 sec
+Non parallela 4322
+la pasword in chiaro è 13/12/98 codificata in 491C8A60DBC16D5D
+Time taken by program is : 7.000000 sec
+
+Parallela 4343422
+la pasword in chiaro è 13/12/98 codificata in F90BF71BF4A7303E
+Time taken by program is : 834.000000 sec
+Non Parallela 4343422
+la pasword in chiaro è 13/12/98 codificata in F90BF71BF4A7303E
+Time taken by program is : 3323.000000 sec

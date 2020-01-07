@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/99/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/99/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm
+CMAKE_SOURCE_DIR = /home/jabosso/Desktop/PC_Exam/des_fin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jabosso/Desktop/PC_Exam/des_fin/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/98/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/99/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/98/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/99/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/CMakeFiles /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jabosso/Desktop/PC_Exam/des_fin/cmake-build-debug/CMakeFiles /home/jabosso/Desktop/PC_Exam/des_fin/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jabosso/Documenti/Università/PC/elaborato/decrypt/psw_opm/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jabosso/Desktop/PC_Exam/des_fin/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,71 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named PC1
+# Target rules for targets named des_fin
 
 # Build rule for target.
-PC1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 PC1
-.PHONY : PC1
+des_fin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 des_fin
+.PHONY : des_fin
 
 # fast build rule for target.
-PC1/fast:
-	$(MAKE) -f CMakeFiles/PC1.dir/build.make CMakeFiles/PC1.dir/build
-.PHONY : PC1/fast
+des_fin/fast:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/build
+.PHONY : des_fin/fast
+
+des.o: des.cpp.o
+
+.PHONY : des.o
+
+# target to build an object file
+des.cpp.o:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/des.cpp.o
+.PHONY : des.cpp.o
+
+des.i: des.cpp.i
+
+.PHONY : des.i
+
+# target to preprocess a source file
+des.cpp.i:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/des.cpp.i
+.PHONY : des.cpp.i
+
+des.s: des.cpp.s
+
+.PHONY : des.s
+
+# target to generate assembly for a file
+des.cpp.s:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/des.cpp.s
+.PHONY : des.cpp.s
+
+key_trasformer.o: key_trasformer.cpp.o
+
+.PHONY : key_trasformer.o
+
+# target to build an object file
+key_trasformer.cpp.o:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/key_trasformer.cpp.o
+.PHONY : key_trasformer.cpp.o
+
+key_trasformer.i: key_trasformer.cpp.i
+
+.PHONY : key_trasformer.i
+
+# target to preprocess a source file
+key_trasformer.cpp.i:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/key_trasformer.cpp.i
+.PHONY : key_trasformer.cpp.i
+
+key_trasformer.s: key_trasformer.cpp.s
+
+.PHONY : key_trasformer.s
+
+# target to generate assembly for a file
+key_trasformer.cpp.s:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/key_trasformer.cpp.s
+.PHONY : key_trasformer.cpp.s
 
 main.o: main.cpp.o
 
@@ -129,7 +183,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/PC1.dir/build.make CMakeFiles/PC1.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +192,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/PC1.dir/build.make CMakeFiles/PC1.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,8 +201,35 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/PC1.dir/build.make CMakeFiles/PC1.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+text_converter.o: text_converter.cpp.o
+
+.PHONY : text_converter.o
+
+# target to build an object file
+text_converter.cpp.o:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/text_converter.cpp.o
+.PHONY : text_converter.cpp.o
+
+text_converter.i: text_converter.cpp.i
+
+.PHONY : text_converter.i
+
+# target to preprocess a source file
+text_converter.cpp.i:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/text_converter.cpp.i
+.PHONY : text_converter.cpp.i
+
+text_converter.s: text_converter.cpp.s
+
+.PHONY : text_converter.s
+
+# target to generate assembly for a file
+text_converter.cpp.s:
+	$(MAKE) -f CMakeFiles/des_fin.dir/build.make CMakeFiles/des_fin.dir/text_converter.cpp.s
+.PHONY : text_converter.cpp.s
 
 # Help Target
 help:
@@ -157,11 +238,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... PC1"
+	@echo "... des_fin"
 	@echo "... edit_cache"
+	@echo "... des.o"
+	@echo "... des.i"
+	@echo "... des.s"
+	@echo "... key_trasformer.o"
+	@echo "... key_trasformer.i"
+	@echo "... key_trasformer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... text_converter.o"
+	@echo "... text_converter.i"
+	@echo "... text_converter.s"
 .PHONY : help
 
 
