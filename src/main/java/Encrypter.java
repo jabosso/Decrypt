@@ -16,7 +16,7 @@ public class Encrypter {
         try {
             cipher = Cipher.getInstance(algName);
         } catch (GeneralSecurityException e) {
-            throw new IllegalStateException("Impossibile inizializzare il cipher", e);
+            throw new IllegalStateException("Unable to init the cipher for the current algorithm", e);
         }
     }
 
@@ -27,11 +27,12 @@ public class Encrypter {
             key = new SecretKeySpec(desKey, "DES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
         } catch (InvalidKeyException e) {
-            System.out.println("Impossibile usare questa chiave " + newKey);
+            System.out.println("Unable to use " + newKey + " as a key. Moving to next");
         }
     }
 
     private void parseAsByteArray(long newKey) {
+        //Bit manipulation to partition the key as bytes
         keyAsLong[0] = (byte) (newKey & 0xFF);
         keyAsLong[1] = (byte) ((newKey >> 8) & 0xFF);
         keyAsLong[2] = (byte) ((newKey >> 16) & 0xFF);
@@ -42,7 +43,7 @@ public class Encrypter {
         keyAsLong[7] = (byte) ((newKey >> 56) & 0xFF);
     }
 
-    private static void formatAsDES(final byte[] in, final byte[] out) {
+    private static void formatAsDES(final byte[] in, final byte[] out){
         out[0] = (byte) ((in[0] >> 1) & 0xff);
         out[1] = (byte) ((((in[0] & 0x01) << 6) | (((in[1] & 0xff) >> 2) & 0xff)) & 0xff);
         out[2] = (byte) ((((in[1] & 0x03) << 5) | (((in[2] & 0xff) >> 3) & 0xff)) & 0xff);
@@ -57,18 +58,22 @@ public class Encrypter {
         }
     }
 
+    //encrypt the password with the the current key and return it as a string
+    //returns null if the current password can not be encoded with the current cipher
     public String encrypt(String password, String charsetName) {
         byte[] utf8 = null;
         try {
             utf8 = password.getBytes(charsetName);
         } catch (UnsupportedEncodingException e) {
-            throw new IllegalStateException("Impossibile usare questo charset per la criptazione", e);
+            throw new IllegalStateException("Unable to use current charset for encryption ", e);
+        }catch( NullPointerException e){
+            System.out.println(password);
         }
         try {
             byte[] enc = cipher.doFinal(utf8);
             enc = BASE64EncoderStream.encode(enc);
             return new String(enc);
-        } catch (IllegalStateException | GeneralSecurityException b) {
+        } catch (IllegalStateException | GeneralSecurityException | IllegalArgumentException b) {
             return null;
         }
     }

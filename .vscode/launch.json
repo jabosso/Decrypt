@@ -1,0 +1,19 @@
+{
+    "configurations": [
+    
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BruteForce",
+            "request": "launch",
+            "mainClass": "BruteForce",
+            "projectName": "des-parallel"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "des-parallel"
+        }
+    ]
+}

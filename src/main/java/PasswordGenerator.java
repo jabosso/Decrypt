@@ -22,6 +22,7 @@ public class PasswordGenerator {
         amountGenerated = 0;
     }
 
+    //generates one password at a time until has generated all possible passwords
     public synchronized String generate() {
         String newPwd = null;
         if (amountGenerated == 0) {
@@ -35,12 +36,16 @@ public class PasswordGenerator {
         return newPwd;
     }
 
+    //considers the 8 character password as an array of integers
+    //every integer defines one of the elements of the charset
+    //useful if charset is not made only of numbers
     protected int[] getNextPassword(int[] vector) {
         int[] startingVector = vector.clone();
         vector[vector.length - 1] += 1;
         int rest = vector[vector.length - 1] / charSet.length;
         vector[vector.length - 1] = vector[vector.length - 1] % charSet.length;
         int i = pwdLength - 2;
+
         while (rest == 1 && i >= 0) {
             vector[i] = vector[i] + rest;
             rest = 0;
@@ -50,9 +55,11 @@ public class PasswordGenerator {
                 i--;
             }
         }
+
         amountGenerated++;
+
         boolean empty = true;
-        for (int j = 0; i < vector.length; i++) {
+        for (int j = 0; j < vector.length; j++) {
             if (vector[j] != 0) {
                 empty = false;
             }
@@ -63,6 +70,7 @@ public class PasswordGenerator {
         return vector;
     }
 
+    //generate password string from integer array
     private String generateString(int[] vector) {
         StringBuilder newPwd = new StringBuilder();
         for (int value : vector) {
@@ -76,8 +84,7 @@ public class PasswordGenerator {
     }
 
     protected long getMaxAmount() {
-        long maxAmount = (long) Math.pow(charSet.length, pwdLength);
-        return maxAmount;
+        return (long) Math.pow(charSet.length, pwdLength);
     }
 
     protected long getAmountGenerated() {

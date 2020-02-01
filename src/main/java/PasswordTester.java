@@ -1,3 +1,4 @@
+
 class PasswordTester extends Thread {
 
     private Encrypter encoder;
@@ -6,34 +7,42 @@ class PasswordTester extends Thread {
     private long endKey;
     private long tested;
     private FoundChecker fc;
-    private long testedKey;
     private PasswordGenerator generator;
 
     public PasswordTester(String originalPwdEncrypted, long endKey, FoundChecker fc, PasswordGenerator generator)
             throws IllegalArgumentException {
 
         encoder = new Encrypter("DES");
-        if (originalPwdEncrypted.equals("") || originalPwdEncrypted.equals(null)) {
-            throw new IllegalArgumentException("La password non puo essere vuota");
+        if (originalPwdEncrypted.equals("")) {
+            throw new IllegalArgumentException("Password can not be empty");
         }
         this.originalPwdEncrypted = originalPwdEncrypted;
         startKey = 0;
         if (endKey < 0) {
-            throw new IllegalArgumentException("Nessuna chiave da testare");
+            throw new IllegalArgumentException("No keys to test");
         }
+
         this.endKey = endKey;
         tested = 0L;
         this.fc = fc;
         this.generator = generator;
     }
 
+    //at every outer loop generates a new password from the singleton generator and reset the used key to startKey
+    //at every inner loop encrypts the current password with one key and tests it again the original encrypted password
     public void run() {
         while (!fc.found) {
             String pwdToTest = generator.generate();
-            testedKey = startKey;
+            if(pwdToTest == "1404"){
+                int x = 1;
+                System.out.println(pwdToTest);
+            }
+            long testedKey = startKey;
             tested++;
             while (testedKey <= endKey && !fc.found) {
-                fc.found = testPasswordWithKey(pwdToTest, testedKey);
+                if(testPasswordWithKey(pwdToTest, testedKey)){
+                    fc.found = true;
+                }
                 testedKey++;
             }
         }
@@ -44,18 +53,18 @@ class PasswordTester extends Thread {
         String pwdToTestEncrypted = encoder.encrypt(pwdToTest, "UTF8");
         if (pwdToTestEncrypted != null && !pwdToTest.equals("")) {
             if (originalPwdEncrypted.equals(pwdToTestEncrypted)) {
-                System.out.println("Password decriptata: " + pwdToTest);
+                System.out.println("Decrypted password: " + pwdToTest);
                 return true;
             } else {
                 return false;
             }
         } else {
-            System.out.println("Errore nella codifica della password");
+            System.out.println("Unable to encode password");
             return false;
         }
     }
 
     public String getTested() {
-        return "ha testato " + tested + " passwords";
+        return "has tested " + tested + " passwords";
     }
 }

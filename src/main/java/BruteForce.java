@@ -11,7 +11,7 @@ public class BruteForce {
         int numThreads = 0;
         long keyBits = 0L;
 
-        // Parameters input
+        //Parameters input
         Scanner scanner = new Scanner(System.in);
         try {
             while (originalPassword.equals("") || numThreads == 0 || keyBits == 0L) {
@@ -33,24 +33,27 @@ public class BruteForce {
         }
         scanner.close();
 
+        //Generate the to-be-decrypted password depending on the previously defined bits and encode it
         PasswordGenerator pwdGenerator = new PasswordGenerator(originalPassword.length());
-        // Key range setup and original password encryption
-        long maxkey = ~(0L);
-        maxkey = maxkey >>> (64 - keyBits);
-
         Encrypter encoder = new Encrypter("DES");
         Random generator = new Random();
+
+        long maxKey = ~(0L);
+        maxKey = maxKey >>> (64 - keyBits);
         long key = generator.nextLong();
-        key = key & maxkey;
+        key = key & maxKey;
         encoder.setKey(key);
+
         String encryptedPassword = encoder.encrypt(originalPassword, "UTF8");
 
+        //Start time monitoring
         long startTime = System.currentTimeMillis();
 
         PasswordTester[] threads = new PasswordTester[numThreads];
         FoundChecker fc = new FoundChecker(threads);
+
         for (int m = 0; m < numThreads; m++) {
-            threads[m] = new PasswordTester(encryptedPassword, maxkey, fc, pwdGenerator);
+            threads[m] = new PasswordTester(encryptedPassword, maxKey, fc, pwdGenerator);
             threads[m].start();
         }
 
@@ -62,15 +65,15 @@ public class BruteForce {
                 threads[m].join();
             } catch (InterruptedException e) {
                 System.out.println(
-                        "Thread " + m + " interrotto. Errore: " + e.toString() + " Messaggio: " + e.getMessage());
+                        "Thread " + m + " interrupted. Error: " + e.toString() + " Message: " + e.getMessage());
                 return;
             }
         }
 
         long elapsed = System.currentTimeMillis() - startTime;
-        long keys = maxkey + 1;
+        long keys = maxKey + 1;
 
-        System.out.println("Ricerca su " + keys + " chiavi completata in " + elapsed + " millisecondi.");
+        System.out.println("Completed brute force on " + keys + " keys in " + elapsed + " ms.");
         System.exit(1);
     }
 }
