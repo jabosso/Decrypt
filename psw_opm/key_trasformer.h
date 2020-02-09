@@ -2,8 +2,8 @@
 // Created by jabosso on 07/01/20.
 //
 
-#ifndef DES_FIN_KEY_TRASFORMER_H
-#define DES_FIN_KEY_TRASFORMER_H
+#ifndef PSW_OPM_KEY_TRASFORMER_H
+#define PSW_OPM_KEY_TRASFORMER_H
 
 #include <iostream>
 #include <cmath>
@@ -49,4 +49,4 @@ struct key_set{
 
 key_set key_producer(long int x);
 
-#endif //DES_FIN_KEY_TRASFORMER_H
+#endif //PSW_OPM_KEY_TRASFORMER_H
