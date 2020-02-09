@@ -1,4 +1,4 @@
-/snap/clion/99/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jabosso/Desktop/PC_Exam/des_fin
+/snap/clion/100/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jabosso/Desktop/Parallel/Decrypt/psw_opm
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/jabosso/Desktop/PC_Exam/des_fin/cmake-build-debug
+-- Build files have been written to: /home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug

@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="des_fin"/>
+		<Option title="psw_opm"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -27,8 +27,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="des_fin">
-				<Option output="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/des_fin" prefix_auto="0" extension_auto="0"/>
+			<Target title="psw_opm">
+				<Option output="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/psw_opm" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -44,14 +44,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 des_fin"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 psw_opm"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="des_fin/fast">
-				<Option output="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/des_fin" prefix_auto="0" extension_auto="0"/>
+			<Target title="psw_opm/fast">
+				<Option output="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/psw_opm" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -67,7 +67,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 des_fin/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 psw_opm/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -85,31 +85,31 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/database.cpp">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/database.h">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/des.cpp">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/des.h">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/key_trasformer.cpp">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/key_trasformer.h">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/main.cpp">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/text_converter.cpp">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/text_converter.h">
-			<Option target="des_fin"/>
+			<Option target="psw_opm"/>
 		</Unit>
 		<Unit filename="/home/jabosso/Desktop/Parallel/Decrypt/psw_opm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
