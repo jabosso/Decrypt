@@ -14,20 +14,19 @@ public class BruteForce {
         //Parameters input
         Scanner scanner = new Scanner(System.in);
         try {
-            while (originalPassword.equals("") || numThreads == 0 || keyBits == 0L) {
-                if (originalPassword.equals("")) {
-                    System.out.println("Input password");
-                    originalPassword = scanner.nextLine();
-                }
-                if (numThreads == 0) {
-                    System.out.println("Input number of threads");
-                    numThreads = Integer.parseInt(scanner.nextLine());
-                }
-                if (keyBits == 0L) {
-                    System.out.println("Input key bits");
-                    keyBits = Long.parseLong(scanner.nextLine());
-                }
-            }
+
+            System.out.println("Input password");
+            originalPassword = scanner.nextLine();
+
+
+            System.out.println("Input number of threads");
+            numThreads = Integer.parseInt(scanner.nextLine());
+
+
+            System.out.println("Input key bits");
+            keyBits = Long.parseLong(scanner.nextLine());
+
+
         } catch (Exception e) {
             System.out.println("Missing inputs");
         }
