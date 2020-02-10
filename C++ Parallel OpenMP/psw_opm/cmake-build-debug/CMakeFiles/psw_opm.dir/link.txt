@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -fopenmp -g -O0   CMakeFiles/psw_opm.dir/main.cpp.o CMakeFiles/psw_opm.dir/text_converter.cpp.o CMakeFiles/psw_opm.dir/key_trasformer.cpp.o CMakeFiles/psw_opm.dir/des.cpp.o CMakeFiles/psw_opm.dir/database.cpp.o  -o psw_opm 
