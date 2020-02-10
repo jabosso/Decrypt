@@ -33,18 +33,16 @@ class PasswordTester extends Thread {
     public void run() {
         while (!fc.found) {
             String pwdToTest = generator.generate();
-            if(pwdToTest == "1404"){
-                int x = 1;
-                System.out.println(pwdToTest);
-            }
             long testedKey = startKey;
             tested++;
+
             while (testedKey <= endKey && !fc.found) {
                 if(testPasswordWithKey(pwdToTest, testedKey)){
                     fc.found = true;
                 }
                 testedKey++;
             }
+
         }
     }
 

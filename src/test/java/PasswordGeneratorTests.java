@@ -42,7 +42,7 @@ public class PasswordGeneratorTests {
             }
         }
 
-        Assert.assertTrue(actual.length() == 8);
+        Assert.assertEquals(actual.length(), 8);
         Assert.assertFalse(wrongChar);
     }
 

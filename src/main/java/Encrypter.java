@@ -8,7 +8,6 @@ import javax.crypto.spec.SecretKeySpec;
 public class Encrypter {
 
     private Cipher cipher;
-    private SecretKeySpec key = null;
     private final byte[] keyAsLong = new byte[8];
     private final byte[] desKey = new byte[8];
 
@@ -24,7 +23,7 @@ public class Encrypter {
         try {
             parseAsByteArray(newKey);
             formatAsDES(keyAsLong, desKey);
-            key = new SecretKeySpec(desKey, "DES");
+            SecretKeySpec key = new SecretKeySpec(desKey, "DES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
         } catch (InvalidKeyException e) {
             System.out.println("Unable to use " + newKey + " as a key. Moving to next");

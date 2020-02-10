@@ -25,6 +25,7 @@ public class PasswordGenerator {
     //generates one password at a time until has generated all possible passwords
     public synchronized String generate() {
         String newPwd = null;
+
         if (amountGenerated == 0) {
             pwdVector = new int[pwdLength];
             newPwd = generateString(pwdVector);
@@ -33,6 +34,7 @@ public class PasswordGenerator {
             pwdVector = getNextPassword(pwdVector);
             newPwd = generateString(pwdVector);
         }
+
         return newPwd;
     }
 
@@ -59,23 +61,27 @@ public class PasswordGenerator {
         amountGenerated++;
 
         boolean empty = true;
-        for (int j = 0; j < vector.length; j++) {
-            if (vector[j] != 0) {
+        for (int value : vector) {
+            if (value != 0) {
                 empty = false;
+                break;
             }
         }
         if (empty) {
             return startingVector;
         }
+
         return vector;
     }
 
     //generate password string from integer array
     private String generateString(int[] vector) {
         StringBuilder newPwd = new StringBuilder();
+
         for (int value : vector) {
             newPwd.append(charSet[value]);
         }
+
         return newPwd.toString();
     }
 
