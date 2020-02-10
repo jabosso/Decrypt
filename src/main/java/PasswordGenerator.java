@@ -39,7 +39,7 @@ public class PasswordGenerator {
         return newPwd;
     }
 
-    //considers the 8 character password as an array of integers
+    //considers the n character password as an array of integers
     //every integer defines one of the elements of the charset
     //useful if charset is not made only of numbers
     protected int[] getNextPassword(int[] vector) {

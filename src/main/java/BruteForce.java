@@ -61,6 +61,7 @@ public class BruteForce {
 
     }
 
+    //encrypt the given password with the given key and return true if the passwords match
     public static boolean testPasswordWithKey(String originalPasswordEncrypted, String pwdToTest, long testedKey) {
         encoder.setKey(testedKey);
         String pwdToTestEncrypted = encoder.encrypt(pwdToTest, "UTF8");
