@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/des-parallel.iml" filepath="$PROJECT_DIR$/des-parallel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesParallel.iml" filepath="$PROJECT_DIR$/DesParallel.iml" />
     </modules>
   </component>
 </project>

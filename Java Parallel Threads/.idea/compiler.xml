@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="des-parallel" />
+        <module name="DesParallel" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="des-parallel" target="1.8" />
+      <module name="DesParallel" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

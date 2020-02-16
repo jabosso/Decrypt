@@ -45,11 +45,11 @@ public class BruteForce {
 
         String encryptedPassword = encoder.encrypt(originalPassword, "UTF8");
 
+        PasswordTester[] threads = new PasswordTester[numThreads];
+        FoundChecker fc = new FoundChecker();
+
         //Start time monitoring
         long startTime = System.currentTimeMillis();
-
-        PasswordTester[] threads = new PasswordTester[numThreads];
-        FoundChecker fc = new FoundChecker(threads);
 
         for (int m = 0; m < numThreads; m++) {
             threads[m] = new PasswordTester(encryptedPassword, maxKey, fc, pwdGenerator);
@@ -57,7 +57,7 @@ public class BruteForce {
         }
 
         Timer timer = new Timer();
-        timer.schedule(new FoundChecker(threads), 1000, 10000);
+        timer.schedule(new ProgressPrinter(pwdGenerator), 1000, 10000);
 
         for (int m = 0; m < numThreads; m++) {
             try {
@@ -69,10 +69,10 @@ public class BruteForce {
             }
         }
 
-        long elapsed = System.currentTimeMillis() - startTime;
+        long elapsed = (System.currentTimeMillis() - startTime) / 1000;
         long keys = maxKey + 1;
 
-        System.out.println("Completed brute force on " + keys + " keys in " + elapsed + " ms.");
+        System.out.println("Completed brute force on " + keys + " keys in " + elapsed + " s.");
         System.exit(1);
     }
 }
